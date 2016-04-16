@@ -1,7 +1,15 @@
+[Bb]in/
+[Bb]uild/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Pp]ackages/
+[Tt]ools/
+![Tt]ools/packages.config
+nuget.exe
 *.com
 *.class
 *.exe
-!NuGet.exe
 *.o
 *.so
 *.user
@@ -11,8 +19,6 @@ _ReSharper*
 *dotCover
 .JustCode
 *.suo
-bin
-obj
 .svn
 ipch
 *.ilk
@@ -21,5 +27,4 @@ ipch
 *.pdb
 /*.~vsd
 *UpgradeWizard*
-packages/*
 .vs/*

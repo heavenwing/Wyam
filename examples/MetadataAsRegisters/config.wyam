@@ -1,0 +1,9 @@
+Pipelines.Add(
+	ReadFiles("*.md"),
+	Markdown(),
+	Meta("Header", FileSystem.GetInputFile("header.html").ReadAllText()),
+	Prepend(@doc["Header"]),
+	Meta("Footer", FileSystem.GetInputFile("footer.html").ReadAllText()),
+	Append(@doc["Footer"]),
+	WriteFiles(".html")
+);

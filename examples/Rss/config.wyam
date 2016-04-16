@@ -1,0 +1,16 @@
+Pipelines.Add("Blog posts",
+	ReadFiles("posts/*.md"),
+	FrontMatter(Yaml()),
+	Markdown(),
+	WriteFiles(string.Format("{0}/index.html", @doc.String("RelativeFilePathBase"))),
+	Branch(
+		Rss("http://example.org", "posts/feed.rss", "My awesome blog", "Blog about something")
+            .WithTitleMetaKey("Title")
+            .WithDescriptionMetaKey("Description")
+            .WithLinkCustomizer((link) => link.FileName.FullPath == "index.html" ? new FilePath(link.Directory.FullPath) : link),
+		WriteFiles()
+	)
+	// Use Branch so RSS feed document doesn't get outputted
+	// useful when other pipelines relies on this pipeline
+	// documents
+);
